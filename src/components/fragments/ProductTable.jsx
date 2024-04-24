@@ -11,16 +11,18 @@ export function ProductTable({data}){
     const [totalProduct, setTotalProduct] = useState(0)
 
     useEffect(() => {
-        const sumTotalProduct = data.reduce((acc, curVal) => acc +  Number(curVal.pieces), 0)
-        setTotalProduct(sumTotalProduct)
-
-        const sumCashOut = data.filter(dt => dt.isDone === "sudah").reduce((acc, curVal) => acc + Number(curVal.price), 0)
-        setTotalCashOut(sumCashOut)
-
-        const sumPrice = data.reduce((acc, curVal)  => acc + Number(curVal.price), 0);
-        setTotalPrice(sumPrice)
-
-        setIsLoading(true)
+        if(data){
+            const sumTotalProduct = data.reduce((acc, curVal) => acc +  Number(curVal.pieces), 0)
+            setTotalProduct(sumTotalProduct)
+    
+            const sumCashOut = data.filter(dt => dt.isDone === "sudah").reduce((acc, curVal) => acc + Number(curVal.price), 0)
+            setTotalCashOut(sumCashOut)
+    
+            const sumPrice = data.reduce((acc, curVal)  => acc + Number(curVal.price), 0);
+            setTotalPrice(sumPrice)
+    
+            setIsLoading(true)
+        }
     }, [data])
 
     if(isLoading){
