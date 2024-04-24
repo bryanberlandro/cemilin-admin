@@ -21,7 +21,7 @@ export function ProductTable({data}){
             const sumPrice = data.reduce((acc, curVal)  => acc + Number(curVal.price), 0);
             setTotalPrice(sumPrice)
     
-            setIsLoading(true)
+            setIsLoading(false)
         }
     }, [data])
 
