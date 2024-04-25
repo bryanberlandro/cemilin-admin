@@ -6,7 +6,6 @@ import { Loader } from "../elements/Loader";
 
 export function ProductTable({data}){
     const [isLoading, setIsLoading] = useState(true);
-    const [nullMsg, setNullMsg] = useState()
     const [totalPrice, setTotalPrice] = useState(0)
     const [totalCashOut, setTotalCashOut] = useState(0)
     const [totalProduct, setTotalProduct] = useState(0)
@@ -23,16 +22,8 @@ export function ProductTable({data}){
             setTotalPrice(sumPrice)
     
             setIsLoading(false)
-        } else {
-            setNullMsg("Data belum ada")
         }
     }, [data])
-
-    if(!data){
-        return(
-            <h1>{nullMsg}</h1>
-        )
-    }
 
     if(isLoading){
         return (

@@ -24,7 +24,11 @@ export default function NotesPage(){
             id: id
         }
 
-        setData([...data, updateData]);
+        if(data == null){
+            setData([updateData])
+        } else {
+            setData([...data, updateData]);
+        }
     }
 
     useEffect(() => {
