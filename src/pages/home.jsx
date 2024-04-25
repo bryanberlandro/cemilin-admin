@@ -1,6 +1,9 @@
 import { useState } from "react";
-import { ProductTable } from "../components/fragments/ProductTable";
 import { InfoCard } from "../components/fragments/InfoCard";
+import { ItemLayout } from "../components/layouts/home/ItemLayout";
+import { SoldItemLayout } from "../components/layouts/home/SoldItemLayout";
+
+
 
 export default function HomePage(){
     const productData = JSON.parse(localStorage.getItem("product"))
@@ -20,18 +23,12 @@ export default function HomePage(){
                 price={cashOut}
                 />
             </div>
-            <div className="mt-5">
-                <h1 className="font-semibold text-lg ">Daftar Item</h1>
-                <p className="text-neutral-700 text-sm">Daftar barang yang sudah dan belum di beli</p>
-            </div>
-            {
-                data ? 
-                <ProductTable data={data} setCashOut={setCashOut}/>
-                : 
-                <div className="text-center pt-10">
-                    <h1 className="font-bold text-neutral-400">Belum ada data</h1>
-                </div>
-            }
+            <ItemLayout
+            data={data}
+            setCashOut={setCashOut}
+            />
+
+            <SoldItemLayout/>
         </div>
         </>
     )
