@@ -6,6 +6,7 @@ export default function HomePage(){
     const productData = JSON.parse(localStorage.getItem("product"))
     const [data, setData] = useState(productData)
 
+
     return(
         <>
         <div className="pt-20 px-[5%] flex flex-col gap-5">

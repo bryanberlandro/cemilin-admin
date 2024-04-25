@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { ProductTable } from "../components/fragments/ProductTable";
+import { FaCheck, FaTrash } from "react-icons/fa";
+import { ListNote } from "../components/fragments/ListNote";
+import { Rupiah } from "../utils/Rupiah";
 
 export default function NotesPage(){
     const productData = JSON.parse(localStorage.getItem('product'))
@@ -31,6 +34,11 @@ export default function NotesPage(){
         }
     }
 
+    function handleRemoveData(dt){
+        const deleteData = data.filter(d => d.id !== dt.id)
+        setData(deleteData)
+    }
+
     useEffect(() => {
         localStorage.setItem("product", JSON.stringify(data))
         console.log(data)
@@ -38,7 +46,8 @@ export default function NotesPage(){
 
     return( 
         <>
-        <div className="pt-20 px-[5%]">
+        <div className="px-[5%] pt-20 pb-5">
+        <div>
             <div className="flex flex-col gap-5 px-10 rounded-lg border-2 py-6 ">
             <form action="" className="flex flex-col gap-4">
                 <div className="flex flex-col gap-2">
@@ -87,7 +96,20 @@ export default function NotesPage(){
 
         </div>
         <div className="flex flex-col px-[5%] mt-5">
-            <ProductTable data={data}/>
+            {
+                data.map((dt, index) => (
+                    <ListNote
+                    key={dt.id}
+                    name={dt.name}
+                    no={index + 1}
+                    price={Rupiah(dt.price)}
+                    isDone={dt.isDone}
+                    onClick={() => handleRemoveData(dt)}
+                    />
+                ))
+            }
+            
+        </div>
         </div>
         </>
     )
