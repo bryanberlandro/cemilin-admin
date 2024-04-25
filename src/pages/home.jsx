@@ -5,7 +5,7 @@ import { InfoCard } from "../components/fragments/InfoCard";
 export default function HomePage(){
     const productData = JSON.parse(localStorage.getItem("product"))
     const [data, setData] = useState(productData)
-
+    const [cashOut, setCashOut] = useState(0)
 
     return(
         <>
@@ -17,7 +17,7 @@ export default function HomePage(){
                 />
                 <InfoCard
                 title={"Pengeluaran"}
-                price={"0"}
+                price={cashOut}
                 />
             </div>
             <div className="mt-5">
@@ -26,7 +26,7 @@ export default function HomePage(){
             </div>
             {
                 data ? 
-                <ProductTable data={data}/>
+                <ProductTable data={data} setCashOut={setCashOut}/>
                 : 
                 <div className="text-center pt-10">
                     <h1 className="font-bold text-neutral-400">Belum ada data</h1>

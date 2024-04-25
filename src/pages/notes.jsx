@@ -96,8 +96,9 @@ export default function NotesPage(){
 
         </div>
         <div className="flex flex-col px-[5%] mt-5">
+            <h1 className="font-semibold text-lg">List Data</h1>
             {
-                data.map((dt, index) => (
+                data?.map((dt, index) => (
                     <ListNote
                     key={dt.id}
                     name={dt.name}

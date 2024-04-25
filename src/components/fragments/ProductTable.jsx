@@ -4,7 +4,7 @@ import { Item } from "../elements/Item";
 import { Rupiah } from "../../utils/Rupiah"
 import { Loader } from "../elements/Loader";
 
-export function ProductTable({data}){
+export function ProductTable({data, setCashOut}){
     const [isLoading, setIsLoading] = useState(true);
     const [totalPrice, setTotalPrice] = useState(0)
     const [totalCashOut, setTotalCashOut] = useState(0)
@@ -17,6 +17,7 @@ export function ProductTable({data}){
     
             const sumCashOut = data.filter(dt => dt.isDone === "sudah").reduce((acc, curVal) => acc + Number(curVal.price), 0)
             setTotalCashOut(sumCashOut)
+            setCashOut(sumCashOut)
     
             const sumPrice = data.reduce((acc, curVal)  => acc + Number(curVal.price), 0);
             setTotalPrice(sumPrice)

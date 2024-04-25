@@ -17,7 +17,7 @@ export function ListNote({no, name, price, isDone, onClick}){
                 </div>
                 <div className="flex justify-between mt-4">
                     <div className="flex gap-2">
-                        <h1>{no} </h1>
+                        <h1>{no}. </h1>
                         <div>
                             <h1>{name}</h1>
                             <p className="text-sm text-neutral-500">5 pcs</p>
