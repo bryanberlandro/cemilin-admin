@@ -24,12 +24,12 @@ export function SaleCard(){
                         </div>
                         <div className="flex">
                             <Summary
-                            title={"Sudah Dibeli"}
+                            title={"Sudah Dibayar"}
                             color={"blue"}
                             />
                             <Summary
-                            title={"Belum Dibeli"}
-                            color={"red"}
+                            title={"Belum Dibayar"}
+                            color={"yellow"}
                             />
                         </div>
                     </div>

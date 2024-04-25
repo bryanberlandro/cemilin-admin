@@ -10,10 +10,10 @@ export function Sidebar({showSidebar}){
                     <Link to={'/'}>Home</Link>
                 </li>
                 <li className="py-4 px-4 w-full rounded-md hover:bg-neutral-100">
-                    <Link to={'/notes'}>Notes</Link>
+                    <Link to={'/consume'}>Pembelian Barang</Link>
                 </li>
                 <li className="py-4 px-4 w-full rounded-md hover:bg-neutral-100">
-                    <a href="">Income</a>
+                    <Link to={'/sales'}>Data Penjualan</Link>
                 </li>
             </ul>
         </div>

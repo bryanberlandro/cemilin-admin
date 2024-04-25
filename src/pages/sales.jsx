@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
-import { ListNote } from "../components/fragments/ListNote";
-import { Rupiah } from "../utils/Rupiah";
 import { GenerateRandomId } from "../utils/GenerateRandomId";
 
-export default function NotesPage(){
-    const productData = JSON.parse(localStorage.getItem('product'))
-    const [data, setData] = useState(productData)
-    
-    function handleSendData(){
+export default function SalesPage(){
+    const buyerData = JSON.parse(localStorage.getItem("sales"))
+    const [data, setData] = useState(buyerData)
+
+    function handleAddData(){
         const name = document.getElementById("prodName").value;
         const pieces = document.getElementById("prodPcs").value;
         const price = document.getElementById("prodPrice").value;
@@ -16,40 +14,33 @@ export default function NotesPage(){
 
         const updateData = {
             name: name,
+            id: id,
             pieces: pieces,
             price: price,
             isDone: isDone,
-            id: id
         }
 
         if(data == null){
             setData([updateData])
         } else {
-            setData([...data, updateData]);
+            setData([...data, updateData])
         }
     }
 
-    function handleRemoveData(dt){
-        const deleteData = data.filter(d => d.id !== dt.id)
-        setData(deleteData)
-    }
-
     useEffect(() => {
-        localStorage.setItem("product", JSON.stringify(data))
-        console.log(data)
+        localStorage.setItem("sales", JSON.stringify(data))
     }, [data])
 
-    return( 
+    return(
         <>
-        <div className="px-[5%] pt-20 pb-5">
-        <div>
-            <div className="flex flex-col gap-5 px-10 rounded-lg border-2 py-6 ">
+        <div className="pt-20 px-[5%]">
+        <div className="flex flex-col gap-5 px-10 rounded-lg border-2 py-6 ">
             <form action="" className="flex flex-col gap-4">
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="prodName">Nama Barang</label>
+                    <label htmlFor="prodName">Nama Pembeli</label>
                     <input 
                     type="text" 
-                    placeholder="Masukkan nama barang"
+                    placeholder="Masukkan nama pembeli"
                     name="prodName"
                     id="prodName"
                     className="border-2 rounded-md px-4 text-sm py-2 outline-none"
@@ -76,7 +67,7 @@ export default function NotesPage(){
                     />
                 </div>
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="prodDone">Sudah Dibeli ?</label>
+                    <label htmlFor="prodDone">Sudah Dibayar ?</label>
                     <select name="prodDone" id="prodDone" className="py-2 rounded-md border-2 outline-none px-4 text-sm">
                         <option value="sudah">Sudah</option>
                         <option value="belum">Belum</option>
@@ -85,27 +76,9 @@ export default function NotesPage(){
             </form>
                 <button 
                 className="py-2 bg-sky-500 rounded-md text-white"
-                onClick={handleSendData}
+                onClick={handleAddData}
                 >Tambahkan Data</button>
             </div>
-
-        </div>
-        <div className="flex flex-col px-[5%] mt-5">
-            <h1 className="font-semibold text-lg">List Data</h1>
-            {
-                data?.map((dt, index) => (
-                    <ListNote
-                    key={dt.id}
-                    name={dt.name}
-                    no={index + 1}
-                    price={Rupiah(dt.price)}
-                    isDone={dt.isDone}
-                    onClick={() => handleRemoveData(dt)}
-                    />
-                ))
-            }
-            
-        </div>
         </div>
         </>
     )

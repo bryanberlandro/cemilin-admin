@@ -6,6 +6,7 @@ import { HashRouter, Route, Routes } from 'react-router-dom'
 import NotesPage from './pages/notes.jsx'
 import Navbar from './components/fragments/Navbar.jsx'
 import { Sidebar } from './components/fragments/Sidebar.jsx'
+import SalesPage from './pages/sales.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -14,7 +15,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Sidebar/>
     <Routes>
       <Route path={"/"} element={<HomePage/>}/>
-      <Route path={"/notes"} element={<NotesPage/>}/>
+      <Route path={"/consume"} element={<NotesPage/>}/>
+      <Route path={"/sales"} element={<SalesPage/>}/>
     </Routes>
     </HashRouter>
   </React.StrictMode>,
