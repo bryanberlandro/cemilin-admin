@@ -30,7 +30,7 @@ export function ProductTable({data}){
 
     if(!data){
         return(
-            <h1>nullMsg</h1>
+            <h1>{nullMsg}</h1>
         )
     }
 
