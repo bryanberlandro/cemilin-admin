@@ -13,12 +13,22 @@ const btn = [
 ]
 
 export function SoldItemLayout(){
+    const salesData = JSON.parse(localStorage.getItem("sales"));
+    const [data, setData] = useState(salesData)
     const [curTab, setCurTab] = useState(0)
     const [transform, setTransform] = useState("")
+    const [loading, setIsLoading] = useState(true)
 
     function handleTab(index){
         setCurTab(index)
     }
+
+    useEffect(() => {
+        if(data){
+            setIsLoading(false)
+        }
+    }, [data])
+    console.log(data)
 
     useEffect(() => {
         if(curTab == 0){
@@ -47,7 +57,12 @@ export function SoldItemLayout(){
                         }
                         <div className={`absolute transition-all duration-300 bg-blue-600 w-1/2 h-full rounded-full ${transform}`}></div>
                     </div>
-                    <SaleCard/>
+                    {
+                        loading ?
+                        <h1>loading...</h1>
+                        :
+                        <SaleCard data={data}/>
+                    }
                 </div>
             </div>
         </>
