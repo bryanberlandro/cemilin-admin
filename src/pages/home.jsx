@@ -2,6 +2,8 @@ import { useState } from "react";
 import { InfoCard } from "../components/fragments/InfoCard";
 import { ItemLayout } from "../components/layouts/home/ItemLayout";
 import { SoldItemLayout } from "../components/layouts/home/SoldItemLayout";
+import { NoteList } from "../components/layouts/home/NoteList";
+
 
 
 
@@ -29,6 +31,7 @@ export default function HomePage(){
             />
 
             <SoldItemLayout/>
+            <NoteList/>
         </div>
         </>
     )

@@ -1,6 +1,7 @@
 import { ProductTable } from "../../fragments/ProductTable";
 
 export function ItemLayout({data, setCashOut}){
+    
     return(
         <>
         <div className="flex flex-col gap-4">
